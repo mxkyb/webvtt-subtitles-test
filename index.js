@@ -76,6 +76,10 @@ const loadDynamicLiveTracks = (video) => {
 };
 
 const startVideo = () => {
+    const video = initVideo();
+    addSource(video);
+    // addTrack(video);
+
     video.play();
 
     loadDynamicLiveTracks(video);
@@ -84,8 +88,10 @@ const startVideo = () => {
 }
 
 initDebug();
-document.getElementById('button').focus();
 
-const video = initVideo();
-addSource(video);
-// addTrack(video);
+document.getElementById('button').focus();
+document.getElementById('button').addEventListener('keydown', () => {
+    console.log('clicked button');
+
+    startVideo();
+});
